@@ -1,0 +1,170 @@
+/* ===============================
+   Improved Molecule Analyzer UI
+   =============================== */
+
+/* ---- Theme & Defaults ---------------------- */
+:root {
+  --color-primary: #3498db;
+  --color-primary-dark: #1e6fa8;
+  --color-secondary: #f8f9fa;
+  --color-bg: #fafafa;
+  --color-text: #2c3e50;
+  --color-error: #e74c3c;
+
+  --radius: 0.5rem;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-secondary: #1e1e1e;
+    --color-bg: #121212;
+    --color-text: #e6e6e6;
+    --color-primary: #3b82f6;
+    --color-primary-dark: #2563eb;
+    --color-error: #f87171;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* ---- Global styles -------------------------- */
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  padding: 2rem 1rem;
+  max-width: 96ch;
+  margin-inline: auto;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-text);
+}
+
+/* ---- Grid layout ---------------------------- */
+.input-group {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .input-group {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+/* ---- Card wrapper --------------------------- */
+.molecule-input {
+  background: var(--color-secondary);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.molecule-input:hover {
+  transform: translateY(-4px);
+}
+
+/* ---- Labels & Inputs ------------------------ */
+label {
+  font-weight: 600;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #d0d7de;
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: #fff;
+  color: var(--color-text);
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+}
+
+/* ---- Buttons -------------------------------- */
+.generate-btn,
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  background: var(--color-primary);
+  color: #fff;
+  transition: var(--transition);
+}
+
+.generate-btn:hover,
+.submit-btn:hover {
+  background: var(--color-primary-dark);
+}
+
+.generate-btn:disabled,
+.submit-btn:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+/* Subtle animated ellipsis when loading */
+.loading::after {
+  content: "…";
+  animation: ellipsis 1s infinite steps(1);
+}
+
+@keyframes ellipsis {
+  0% { content: "…"; }
+  25% { content: "."; }
+  50% { content: ".."; }
+  75% { content: "..."; }
+}
+
+/* ---- Canvas --------------------------------- */
+.canvas-container {
+  width: 100%;
+  height: 200px;
+  border: 1px solid #e1e4e8;
+  border-radius: var(--radius);
+  background: #fff;
+  object-fit: contain;
+}
+
+/* ---- Error text ----------------------------- */
+.error {
+  color: var(--color-error);
+  font-size: 0.875rem;
+}
+
+/* ---- Utility -------------------------------- */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}

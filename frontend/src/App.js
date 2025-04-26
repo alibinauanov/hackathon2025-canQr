@@ -1,6 +1,9 @@
 import { useState, useRef } from 'react';
 import OCL from 'openchemlib';
+import { useNavigate } from 'react-router-dom';
 import './App.css';
+
+const API_BASE = 'http://localhost:4000'; // import.meta.env.VITE_API_BASE ?? 
 
 /********************
  * GRAPH UTILITIES  *
@@ -197,6 +200,7 @@ function App() {
     }
 
     try {
+      console.log(`Depict ${key}:`, smiles);
       const mol = OCL.Molecule.fromSmiles(smiles);
       mol.addImplicitHydrogens();
       mol.inventCoordinates();
@@ -219,13 +223,38 @@ function App() {
     });
   };
 
-  const handleSubmit = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async () => {
     const graphs = [];
     if (goodMolecule) graphs.push(graphFromSmiles(goodMolecule, 1));
-    if (badMolecule) graphs.push(graphFromSmiles(badMolecule, 0));
-    if (drug) graphs.push(graphFromSmiles(drug, 2));
+    if (badMolecule)  graphs.push(graphFromSmiles(badMolecule, 0));
+    if (drug)         graphs.push(graphFromSmiles(drug, 2));
 
-    console.log('%cGraph objects ready for ML:', 'color: #0aad28', graphs);
+    console.log('%cGraphs ready for POST:', 'color:#0aad28', graphs);
+
+    try {
+      setIsLoading(true);
+
+      console.log('POST →', `${API_BASE}/api/analyze`);
+      const res = await fetch(`${API_BASE}/api/analyze`, {
+        method : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body   : JSON.stringify({ graphs }),
+      });
+      if (!res.ok) throw new Error(`Server replied ${res.status}`);
+
+      const metrics = await res.json();
+      console.log('%cMetrics received:', 'color:#0aad28', metrics);
+
+      // 👉 jump to /result and hand over the data
+      navigate('/result', { state: { metrics } });
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

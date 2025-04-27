@@ -1,0 +1,325 @@
+/* Result.css */
+
+.result-page {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to bottom right, #e0f2fe, #e0e7ff);
+    padding: 2rem 1rem;
+  }
+  
+  .result-container {
+    width: 100%;
+    max-width: 72rem;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .result-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  .header-icon {
+    padding: 0.5rem;
+    background-color: #dcfce7;
+    color: #16a34a;
+    border-radius: 9999px;
+  }
+  
+  .header-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #1f2937;
+  }
+  
+  .header-subtitle {
+    color: #6b7280;
+    margin-top: 0.25rem;
+  }
+  
+  .split-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .split-layout {
+      flex-direction: row;
+    }
+  }
+  
+  .left-column {
+    width: 100%;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .metrics-card,
+  .table-card {
+    background: white;
+    border: 1px solid #f3f4f6;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+  }
+  
+  .metrics-header,
+  .table-header {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  
+  .metric-item {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .metric-key {
+    color: #4b5563;
+  }
+  
+  .metric-value {
+    font-weight: 500;
+    color: #1f2937;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-head {
+    background-color: #f9fafb;
+  }
+  
+  .table-head-cell {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .table-row-even {
+    background: white;
+  }
+  
+  .table-row-odd {
+    background: #f9fafb;
+  }
+  
+  .table-cell {
+    padding: 0.75rem 1rem;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    color: #374151;
+    border-right: 1px solid #f3f4f6;
+  }
+  
+  .table-cell:last-child {
+    border-right: none;
+  }
+  
+  .right-column {
+    width: 100%;
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .graphs-grid {
+    max-width: 50rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .graphs-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .graph-card {
+    background: white;
+    border: 1px solid #f3f4f6;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .graph-image {
+    width: 100%;
+    height: 320px;
+    object-fit: contain;
+    border-radius: 0.75rem;
+  }
+  
+  .graph-description {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+    padding: 0 0.25rem;
+  }
+  
+  .back-button-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #4f46e5;
+    padding: 0.625rem 1.5rem;
+    border-radius: 9999px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(79, 70, 229, 0.4);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+  }
+  
+  .back-button:hover {
+    background-color: #4338ca;
+    box-shadow: 0 6px 10px rgba(79, 70, 229, 0.6);
+  }
+  
+  .back-button:focus {
+    outline: 2px solid #c7d2fe;
+    outline-offset: 2px;
+  }
+  
+  /* No result state */
+  .no-data-page {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom right, #e0f2fe, #e0e7ff);
+    padding: 1.5rem;
+  }
+  
+  .no-data-card {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 1rem;
+    padding: 2rem;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+  }
+  
+  .no-data-icon {
+    display: block;
+    margin: 0 auto 1rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    color: #f97316;
+  }
+  
+  .no-data-title {
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  .no-data-link {
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #6366f1;
+    text-decoration: none;
+  }
+  
+  .no-data-link:hover {
+    color: #4f46e5;
+  }
+
+  /* Modal for full image view */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  .modal-content {
+    position: relative;
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: hidden;
+  }
+  
+  .modal-image {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 0.5rem;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 0.4rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .modal-close:hover {
+    background: #dc2626;
+  }
+  
+  /* Make images look clickable */
+  .clickable {
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .clickable:hover {
+    transform: scale(1.03);
+  }

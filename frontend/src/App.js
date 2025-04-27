@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import OCL from 'openchemlib';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
+import logo from './output_images/logo.png';
 
 const API_BASE = 'http://localhost:4000'; // import.meta.env.VITE_API_BASE ?? 
 
@@ -247,6 +248,8 @@ function App() {
       const metrics = await res.json();
       console.log('%cMetrics received:', 'color:#0aad28', metrics);
 
+      await new Promise(resolve => setTimeout(resolve, 3000));
+
       // 👉 jump to /result and hand over the data
       navigate('/result', { state: { metrics } });
     } catch (err) {
@@ -259,47 +262,34 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="text-2xl font-semibold mb-4">Molecule Analyzer</h1>
+      {isLoading ? (
+        <div className="loading-overlay">
+          <div className="spinner"></div>
+          <div className="molecule-loader">
+            ⚛️
+          </div>
+          <p>Analyzing molecules, please wait...</p>
+        </div>
+      ) : (
+        <>
+          <header className="app-header flex items-center gap-4 mb-8">
+            <img src={logo} alt="Logo" className="logo" />
+            <h1 className="team-title">Team 5 - canQr</h1>
+          </header>
 
-      <div className="input-group grid gap-6 md:grid-cols-3">
-        {/* Good molecule */}
-        <MoleculeInput
-          label="Good Molecule"
-          smiles={goodMolecule}
-          onChange={setGoodMolecule}
-          onGenerate={() => handleGenerate(goodMolecule, goodCanvasRef, 'good')}
-          canvasRef={goodCanvasRef}
-          error={errors.good}
-        />
+          <h1 className="text-2xl font-semibold mb-4">Molecule Analyzer</h1>
 
-        {/* Bad molecule */}
-        <MoleculeInput
-          label="Bad Molecule"
-          smiles={badMolecule}
-          onChange={setBadMolecule}
-          onGenerate={() => handleGenerate(badMolecule, badCanvasRef, 'bad')}
-          canvasRef={badCanvasRef}
-          error={errors.bad}
-        />
+          <div className="input-group">
+            <MoleculeInput label="Healthy Molecule" smiles={goodMolecule} onChange={setGoodMolecule} onGenerate={() => handleGenerate(goodMolecule, goodCanvasRef, 'good')} canvasRef={goodCanvasRef} error={errors.good} />
+            <MoleculeInput label="Cancer Molecule" smiles={badMolecule} onChange={setBadMolecule} onGenerate={() => handleGenerate(badMolecule, badCanvasRef, 'bad')} canvasRef={badCanvasRef} error={errors.bad} />
+            <MoleculeInput label="Drug Molecule" smiles={drug} onChange={setDrug} onGenerate={() => handleGenerate(drug, drugCanvasRef, 'drug')} canvasRef={drugCanvasRef} error={errors.drug} />
+          </div>
 
-        {/* Drug molecule */}
-        <MoleculeInput
-          label="Drug Molecule"
-          smiles={drug}
-          onChange={setDrug}
-          onGenerate={() => handleGenerate(drug, drugCanvasRef, 'drug')}
-          canvasRef={drugCanvasRef}
-          error={errors.drug}
-        />
-      </div>
-
-      <button
-        className={`submit-btn ${isLoading ? 'loading' : ''}`}
-        onClick={handleSubmit}
-        disabled={isLoading}
-      >
-        {isLoading ? 'Processing…' : 'Analyze Molecules'}
-      </button>
+          <button className={`submit-btn ${isLoading ? 'loading' : ''}`} onClick={handleSubmit} disabled={isLoading}>
+            {isLoading ? 'Processing…' : 'Analyze Molecules'}
+          </button>
+        </>
+      )}
     </div>
   );
 }

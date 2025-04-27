@@ -153,15 +153,23 @@ input[type="text"]:focus {
 }
 
 /* ---- Canvas --------------------------------- */
-.canvas-container {
+/* .canvas-container {
   width: 100%;
-  height: 200px;
+  height: 200%;
   border: 1px solid #e1e4e8;
   border-radius: var(--radius);
   background: #fff;
   object-fit: contain;
+} */
+.canvas-container {
+  width: 100%;
+  height: 200%; /* FIXED: pixel height */
+  border: 1px solid #e1e4e8;
+  border-radius: var(--radius);
+  background: #fff;
+  object-fit: contain;
+  display: block;
 }
-
 /* ---- Error text ----------------------------- */
 .error {
   color: var(--color-error);

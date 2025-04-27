@@ -176,6 +176,125 @@ export function graphFromSmiles(smiles, label = 0) {
  * REACT COMPONENT  *
  *******************/
 
+
+
+// function App() {
+//   const [goodMolecule, setGoodMolecule] = useState('');
+//   const [badMolecule, setBadMolecule] = useState('');
+//   const [drug, setDrug] = useState('');
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [errors, setErrors] = useState({ good: '', bad: '', drug: '' });
+
+//   // Canvas refs
+//   const goodCanvasRef = useRef(null);
+//   const badCanvasRef = useRef(null);
+//   const drugCanvasRef = useRef(null);
+
+//   /** Draw a 2‑D depiction of a SMILES on a canvas */
+//   const draw = (smiles, canvasRef, key) => {
+//     if (!canvasRef.current) return;
+//     const canvas = canvasRef.current;
+//     const ctx = canvas.getContext('2d');
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+//     if (!smiles.trim()) {
+//       setErrors((e) => ({ ...e, [key]: '' }));
+//       return;
+//     }
+
+//     try {
+//       console.log(`Depict ${key}:`, smiles);
+//       const mol = OCL.Molecule.fromSmiles(smiles);
+//       mol.addImplicitHydrogens();
+//       mol.inventCoordinates();
+//       const svg = mol.toSVG(canvas.width, canvas.height, undefined, { autoCrop: true });
+//       const img = new Image();
+//       img.onload = () => ctx.drawImage(img, 0, 0);
+//       img.onerror = () => setErrors((e) => ({ ...e, [key]: 'Render error' }));
+//       img.src = `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+//       setErrors((e) => ({ ...e, [key]: '' }));
+//     } catch (_) {
+//       setErrors((e) => ({ ...e, [key]: 'Invalid SMILES' }));
+//     }
+//   };
+
+//   const handleGenerate = (smiles, ref, key) => {
+//     setIsLoading(true);
+//     requestAnimationFrame(() => {
+//       draw(smiles, ref, key);
+//       setIsLoading(false);
+//     });
+//   };
+
+//   const navigate = useNavigate();
+
+//   const handleSubmit = async () => {
+//     const graphs = [];
+//     if (goodMolecule) graphs.push(graphFromSmiles(goodMolecule, 1));
+//     if (badMolecule)  graphs.push(graphFromSmiles(badMolecule, 0));
+//     if (drug)         graphs.push(graphFromSmiles(drug, 2));
+
+//     console.log('%cGraphs ready for POST:', 'color:#0aad28', graphs);
+
+//     try {
+//       setIsLoading(true);
+
+//       console.log('POST →', `${API_BASE}/api/analyze`);
+//       const res = await fetch(`${API_BASE}/api/analyze`, {
+//         method : 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body   : JSON.stringify({ graphs }),
+//       });
+//       if (!res.ok) throw new Error(`Server replied ${res.status}`);
+
+//       const metrics = await res.json();
+//       console.log('%cMetrics received:', 'color:#0aad28', metrics);
+
+//       await new Promise(resolve => setTimeout(resolve, 3000));
+
+//       // 👉 jump to /result and hand over the data
+//       navigate('/result', { state: { metrics } });
+//     } catch (err) {
+//       console.error(err);
+//       alert(err.message);
+//     } finally {
+//       setIsLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div className="App">
+//       {isLoading ? (
+//         <div className="loading-overlay">
+//           <div className="spinner"></div>
+//           <div className="molecule-loader">
+//             ⚛️
+//           </div>
+//           <p>Analyzing molecules, please wait...</p>
+//         </div>
+//       ) : (
+//         <>
+//           <header className="app-header flex items-center gap-4 mb-8">
+//             <img src={logo} alt="Logo" className="logo" />
+//             <h1 className="team-title">Team 5 - canQr</h1>
+//           </header>
+
+//           <h1 className="text-2xl font-semibold mb-4">Molecule Analyzer</h1>
+
+//           <div className="input-group">
+//             <MoleculeInput label="Healthy Molecule" smiles={goodMolecule} onChange={setGoodMolecule} onGenerate={() => handleGenerate(goodMolecule, goodCanvasRef, 'good')} canvasRef={goodCanvasRef} error={errors.good} />
+//             <MoleculeInput label="Cancer Molecule" smiles={badMolecule} onChange={setBadMolecule} onGenerate={() => handleGenerate(badMolecule, badCanvasRef, 'bad')} canvasRef={badCanvasRef} error={errors.bad} />
+//             <MoleculeInput label="Drug Molecule" smiles={drug} onChange={setDrug} onGenerate={() => handleGenerate(drug, drugCanvasRef, 'drug')} canvasRef={drugCanvasRef} error={errors.drug} />
+//           </div>
+
+//           <button className={`submit-btn ${isLoading ? 'loading' : ''}`} onClick={handleSubmit} disabled={isLoading}>
+//             {isLoading ? 'Processing…' : 'Analyze Molecules'}
+//           </button>
+//         </>
+//       )}
+//     </div>
+//   );
+// }
 function App() {
   const [goodMolecule, setGoodMolecule] = useState('');
   const [badMolecule, setBadMolecule] = useState('');
@@ -248,8 +367,6 @@ function App() {
       const metrics = await res.json();
       console.log('%cMetrics received:', 'color:#0aad28', metrics);
 
-      await new Promise(resolve => setTimeout(resolve, 3000));
-
       // 👉 jump to /result and hand over the data
       navigate('/result', { state: { metrics } });
     } catch (err) {
@@ -262,37 +379,51 @@ function App() {
 
   return (
     <div className="App">
-      {isLoading ? (
-        <div className="loading-overlay">
-          <div className="spinner"></div>
-          <div className="molecule-loader">
-            ⚛️
-          </div>
-          <p>Analyzing molecules, please wait...</p>
-        </div>
-      ) : (
-        <>
-          <header className="app-header flex items-center gap-4 mb-8">
-            <img src={logo} alt="Logo" className="logo" />
-            <h1 className="team-title">Team 5 - canQr</h1>
-          </header>
+      <h1 className="text-2xl font-semibold mb-4">Molecule Analyzer</h1>
 
-          <h1 className="text-2xl font-semibold mb-4">Molecule Analyzer</h1>
+      <div className="input-group grid gap-6 md:grid-cols-3">
+        {/* Good molecule */}
+        <MoleculeInput
+          label="Good Molecule"
+          smiles={goodMolecule}
+          onChange={setGoodMolecule}
+          onGenerate={() => handleGenerate(goodMolecule, goodCanvasRef, 'good')}
+          canvasRef={goodCanvasRef}
+          error={errors.good}
+        />
 
-          <div className="input-group">
-            <MoleculeInput label="Healthy Molecule" smiles={goodMolecule} onChange={setGoodMolecule} onGenerate={() => handleGenerate(goodMolecule, goodCanvasRef, 'good')} canvasRef={goodCanvasRef} error={errors.good} />
-            <MoleculeInput label="Cancer Molecule" smiles={badMolecule} onChange={setBadMolecule} onGenerate={() => handleGenerate(badMolecule, badCanvasRef, 'bad')} canvasRef={badCanvasRef} error={errors.bad} />
-            <MoleculeInput label="Drug Molecule" smiles={drug} onChange={setDrug} onGenerate={() => handleGenerate(drug, drugCanvasRef, 'drug')} canvasRef={drugCanvasRef} error={errors.drug} />
-          </div>
+        {/* Bad molecule */}
+        <MoleculeInput
+          label="Bad Molecule"
+          smiles={badMolecule}
+          onChange={setBadMolecule}
+          onGenerate={() => handleGenerate(badMolecule, badCanvasRef, 'bad')}
+          canvasRef={badCanvasRef}
+          error={errors.bad}
+        />
 
-          <button className={`submit-btn ${isLoading ? 'loading' : ''}`} onClick={handleSubmit} disabled={isLoading}>
-            {isLoading ? 'Processing…' : 'Analyze Molecules'}
-          </button>
-        </>
-      )}
+        {/* Drug molecule */}
+        <MoleculeInput
+          label="Drug Molecule"
+          smiles={drug}
+          onChange={setDrug}
+          onGenerate={() => handleGenerate(drug, drugCanvasRef, 'drug')}
+          canvasRef={drugCanvasRef}
+          error={errors.drug}
+        />
+      </div>
+
+      <button
+        className={`submit-btn ${isLoading ? 'loading' : ''}`}
+        onClick={handleSubmit}
+        disabled={isLoading}
+      >
+        {isLoading ? 'Processing…' : 'Analyze Molecules'}
+      </button>
     </div>
   );
 }
+
 
 /********************
  * SUB‑COMPONENTS   *

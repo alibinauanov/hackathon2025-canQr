@@ -1,0 +1,74 @@
+[
+    {
+        "Step": 1,
+        "Parameter": "bond_length",
+        "Value": 0.8,
+        "Cancer_Binding": 21.387715,
+        "Healthy_Binding": 21.323417,
+        "Selectivity_Score": 0.064298
+    },
+    {
+        "Step": 2,
+        "Parameter": "bond_length",
+        "Value": 1.0,
+        "Cancer_Binding": 20.37771,
+        "Healthy_Binding": 20.936213,
+        "Selectivity_Score": -0.558504
+    },
+    {
+        "Step": 3,
+        "Parameter": "bond_length",
+        "Value": 1.2,
+        "Cancer_Binding": 20.629088,
+        "Healthy_Binding": 20.339154,
+        "Selectivity_Score": 0.289934
+    },
+    {
+        "Step": 4,
+        "Parameter": "electron_affinity",
+        "Value": 0.9,
+        "Cancer_Binding": 20.110757,
+        "Healthy_Binding": 20.343569,
+        "Selectivity_Score": -0.232812
+    },
+    {
+        "Step": 5,
+        "Parameter": "electron_affinity",
+        "Value": 1.0,
+        "Cancer_Binding": 20.572471,
+        "Healthy_Binding": 20.812921,
+        "Selectivity_Score": -0.24045
+    },
+    {
+        "Step": 6,
+        "Parameter": "electron_affinity",
+        "Value": 1.1,
+        "Cancer_Binding": 20.859036,
+        "Healthy_Binding": 20.802099,
+        "Selectivity_Score": 0.056937
+    },
+    {
+        "Step": 7,
+        "Parameter": "pt_charge",
+        "Value": 0.9,
+        "Cancer_Binding": 20.145026,
+        "Healthy_Binding": 20.48796,
+        "Selectivity_Score": -0.342934
+    },
+    {
+        "Step": 8,
+        "Parameter": "pt_charge",
+        "Value": 1.0,
+        "Cancer_Binding": 20.891519,
+        "Healthy_Binding": 20.878345,
+        "Selectivity_Score": 0.013174
+    },
+    {
+        "Step": 9,
+        "Parameter": "pt_charge",
+        "Value": 1.1,
+        "Cancer_Binding": 21.572113,
+        "Healthy_Binding": 21.426828,
+        "Selectivity_Score": 0.145285
+    }
+]

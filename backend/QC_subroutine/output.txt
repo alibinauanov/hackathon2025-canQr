@@ -1,0 +1,333 @@
+Simulating cisplatin binding energy optimization based on reported results...
+
+=== BASELINE BINDING ENERGIES ===
+
+Binding Energy Calculation (Simulated):
+E(combined) = -31.577277
+E(molecule1) = -20.758369
+E(molecule2) = -31.577024
+Binding Energy = 20.589013
+DNA-GG (Cancer): 20.589013
+
+Binding Energy Calculation (Simulated):
+E(combined) = -25.738194
+E(molecule1) = -20.758369
+E(molecule2) = -25.737356
+Binding Energy = 20.321090
+Hair Follicle (Healthy): 20.321090
+
+Binding Energy Calculation (Simulated):
+E(combined) = -28.079944
+E(molecule1) = -20.758369
+E(molecule2) = -28.079432
+Binding Energy = 20.568839
+Bone Marrow (Healthy): 20.568839
+
+Binding Energy Calculation (Simulated):
+E(combined) = -29.226572
+E(molecule1) = -20.758369
+E(molecule2) = -29.226148
+Binding Energy = 20.583128
+Kidney (Healthy): 20.583128
+
+=== VARYING PARAMETER: bond_length ===
+
+--- STEP 1: bond_length = 0.80 ---
+
+Binding Energy Calculation (Simulated):
+E(combined) = -31.577283
+E(molecule1) = -21.158369
+E(molecule2) = -31.577024
+Binding Energy = 21.387715
+
+Binding Energy Calculation (Simulated):
+E(combined) = -25.738231
+E(molecule1) = -21.158369
+E(molecule2) = -25.737356
+Binding Energy = 21.295052
+
+Binding Energy Calculation (Simulated):
+E(combined) = -28.079961
+E(molecule1) = -21.158369
+E(molecule2) = -28.079432
+Binding Energy = 21.545053
+
+Binding Energy Calculation (Simulated):
+E(combined) = -29.226584
+E(molecule1) = -21.158369
+E(molecule2) = -29.226148
+Binding Energy = 21.130148
+Cancer binding: 21.387715
+Average healthy binding: 21.323417
+Selectivity score: 0.064298
+✗ Cancer binding worsened by 0.798702
+✓ Healthy binding reduced by 0.832398
+
+--- STEP 2: bond_length = 1.00 ---
+
+Binding Energy Calculation (Simulated):
+E(combined) = -31.577277
+E(molecule1) = -20.758369
+E(molecule2) = -31.577024
+Binding Energy = 20.377710
+
+Binding Energy Calculation (Simulated):
+E(combined) = -25.738194
+E(molecule1) = -20.758369
+E(molecule2) = -25.737356
+Binding Energy = 20.970776
+
+Binding Energy Calculation (Simulated):
+E(combined) = -28.079944
+E(molecule1) = -20.758369
+E(molecule2) = -28.079432
+Binding Energy = 21.018642
+
+Binding Energy Calculation (Simulated):
+E(combined) = -29.226572
+E(molecule1) = -20.758369
+E(molecule2) = -29.226148
+Binding Energy = 20.819222
+Cancer binding: 20.377710
+Average healthy binding: 20.936213
+Selectivity score: -0.558504
+✓ Cancer binding improved by 0.211304
+✓ Healthy binding reduced by 0.445194
+
+--- STEP 3: bond_length = 1.20 ---
+
+Binding Energy Calculation (Simulated):
+E(combined) = -31.577272
+E(molecule1) = -20.358369
+E(molecule2) = -31.577024
+Binding Energy = 20.629088
+
+Binding Energy Calculation (Simulated):
+E(combined) = -25.738160
+E(molecule1) = -20.358369
+E(molecule2) = -25.737356
+Binding Energy = 20.351361
+
+Binding Energy Calculation (Simulated):
+E(combined) = -28.079929
+E(molecule1) = -20.358369
+E(molecule2) = -28.079432
+Binding Energy = 20.380605
+
+Binding Energy Calculation (Simulated):
+E(combined) = -29.226561
+E(molecule1) = -20.358369
+E(molecule2) = -29.226148
+Binding Energy = 20.285498
+Cancer binding: 20.629088
+Average healthy binding: 20.339154
+Selectivity score: 0.289934
+✗ Cancer binding worsened by 0.040075
+✗ Healthy binding increased by 0.151865
+
+=== VARYING PARAMETER: electron_affinity ===
+
+--- STEP 4: electron_affinity = 0.90 ---
+
+Binding Energy Calculation (Simulated):
+E(combined) = -31.577281
+E(molecule1) = -20.585595
+E(molecule2) = -31.577024
+Binding Energy = 20.110757
+
+Binding Energy Calculation (Simulated):
+E(combined) = -25.738212
+E(molecule1) = -20.585595
+E(molecule2) = -25.737356
+Binding Energy = 20.192631
+
+Binding Energy Calculation (Simulated):
+E(combined) = -28.079953
+E(molecule1) = -20.585595
+E(molecule2) = -28.079432
+Binding Energy = 20.116503
+
+Binding Energy Calculation (Simulated):
+E(combined) = -29.226579
+E(molecule1) = -20.585595
+E(molecule2) = -29.226148
+Binding Energy = 20.721575
+Cancer binding: 20.110757
+Average healthy binding: 20.343569
+Selectivity score: -0.232812
+✓ Cancer binding improved by 0.478256
+✗ Healthy binding increased by 0.147450
+
+--- STEP 5: electron_affinity = 1.00 ---
+
+Binding Energy Calculation (Simulated):
+E(combined) = -31.577277
+E(molecule1) = -20.758369
+E(molecule2) = -31.577024
+Binding Energy = 20.572471
+
+Binding Energy Calculation (Simulated):
+E(combined) = -25.738194
+E(molecule1) = -20.758369
+E(molecule2) = -25.737356
+Binding Energy = 20.766102
+
+Binding Energy Calculation (Simulated):
+E(combined) = -28.079944
+E(molecule1) = -20.758369
+E(molecule2) = -28.079432
+Binding Energy = 21.165423
+
+Binding Energy Calculation (Simulated):
+E(combined) = -29.226572
+E(molecule1) = -20.758369
+E(molecule2) = -29.226148
+Binding Energy = 20.507237
+Cancer binding: 20.572471
+Average healthy binding: 20.812921
+Selectivity score: -0.240450
+✓ Cancer binding improved by 0.016542
+✓ Healthy binding reduced by 0.321902
+
+--- STEP 6: electron_affinity = 1.10 ---
+
+Binding Energy Calculation (Simulated):
+E(combined) = -31.577274
+E(molecule1) = -20.948903
+E(molecule2) = -31.577024
+Binding Energy = 20.859036
+
+Binding Energy Calculation (Simulated):
+E(combined) = -25.738176
+E(molecule1) = -20.948903
+E(molecule2) = -25.737356
+Binding Energy = 21.203634
+
+Binding Energy Calculation (Simulated):
+E(combined) = -28.079936
+E(molecule1) = -20.948903
+E(molecule2) = -28.079432
+Binding Energy = 20.677198
+
+Binding Energy Calculation (Simulated):
+E(combined) = -29.226565
+E(molecule1) = -20.948903
+E(molecule2) = -29.226148
+Binding Energy = 20.525466
+Cancer binding: 20.859036
+Average healthy binding: 20.802099
+Selectivity score: 0.056937
+✗ Cancer binding worsened by 0.270023
+✓ Healthy binding reduced by 0.311080
+
+=== VARYING PARAMETER: pt_charge ===
+
+--- STEP 7: pt_charge = 0.90 ---
+
+Binding Energy Calculation (Simulated):
+E(combined) = -31.577275
+E(molecule1) = -20.355526
+E(molecule2) = -31.577024
+Binding Energy = 20.145026
+
+Binding Energy Calculation (Simulated):
+E(combined) = -25.738171
+E(molecule1) = -20.355526
+E(molecule2) = -25.737356
+Binding Energy = 20.015933
+
+Binding Energy Calculation (Simulated):
+E(combined) = -28.079937
+E(molecule1) = -20.355526
+E(molecule2) = -28.079432
+Binding Energy = 20.784720
+
+Binding Energy Calculation (Simulated):
+E(combined) = -29.226567
+E(molecule1) = -20.355526
+E(molecule2) = -29.226148
+Binding Energy = 20.663228
+Cancer binding: 20.145026
+Average healthy binding: 20.487960
+Selectivity score: -0.342934
+✓ Cancer binding improved by 0.443987
+✗ Healthy binding increased by 0.003059
+
+--- STEP 8: pt_charge = 1.00 ---
+
+Binding Energy Calculation (Simulated):
+E(combined) = -31.577277
+E(molecule1) = -20.758369
+E(molecule2) = -31.577024
+Binding Energy = 20.891519
+
+Binding Energy Calculation (Simulated):
+E(combined) = -25.738194
+E(molecule1) = -20.758369
+E(molecule2) = -25.737356
+Binding Energy = 21.128992
+
+Binding Energy Calculation (Simulated):
+E(combined) = -28.079944
+E(molecule1) = -20.758369
+E(molecule2) = -28.079432
+Binding Energy = 21.061529
+
+Binding Energy Calculation (Simulated):
+E(combined) = -29.226572
+E(molecule1) = -20.758369
+E(molecule2) = -29.226148
+Binding Energy = 20.444515
+Cancer binding: 20.891519
+Average healthy binding: 20.878345
+Selectivity score: 0.013174
+✗ Cancer binding worsened by 0.302506
+✓ Healthy binding reduced by 0.387326
+
+--- STEP 9: pt_charge = 1.10 ---
+
+Binding Energy Calculation (Simulated):
+E(combined) = -31.577280
+E(molecule1) = -21.179810
+E(molecule2) = -31.577024
+Binding Energy = 21.572113
+
+Binding Energy Calculation (Simulated):
+E(combined) = -25.738224
+E(molecule1) = -21.179810
+E(molecule2) = -25.737356
+Binding Energy = 21.218285
+
+Binding Energy Calculation (Simulated):
+E(combined) = -28.079954
+E(molecule1) = -21.179810
+E(molecule2) = -28.079432
+Binding Energy = 21.486728
+
+Binding Energy Calculation (Simulated):
+E(combined) = -29.226578
+E(molecule1) = -21.179810
+E(molecule2) = -29.226148
+Binding Energy = 21.575471
+Cancer binding: 21.572113
+Average healthy binding: 21.426828
+Selectivity score: 0.145285
+✗ Cancer binding worsened by 0.983100
+✓ Healthy binding reduced by 0.935809
+
+=== OPTIMIZATION SUMMARY ===
+Best parameter: bond_length = 1.0
+Cancer binding: 20.377710
+Average healthy binding: 20.936213
+Selectivity score: -0.558504
+
+Improvements from baseline:
+✓ Cancer binding improved by 0.211304
+✓ Healthy binding reduced by 0.445194
+Overall selectivity improvement: 0.656498
+
+Visualizations saved to:
+- binding_energies_by_step.png
+- selectivity_score_by_step.png
+- original_vs_optimized.png
+- binding_profile_radar.png
